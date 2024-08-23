@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Particlehedra
+		</title>		
+        <link rel="stylesheet" type="text/css" href="css/app.css">                        
+        <meta charset  = "utf-8"/>
+        <meta property = "og:title" content = "Particlehedra">
+	</head>
+	<body 
+		onload   = "app = new App(); app.initialize();"
+		onresize = "app.resize();"		
+	>
+	
+		<!-- ------------------------------------------------------------------ -->
+		<!-- create the html canvas and some other global variables             -->
+		<!-- the canvas width and height are determined elsewhere...            -->
+		<!-- ------------------------------------------------------------------ -->
+        <canvas id = "Canvas"></canvas>
+		<script>
+            var canvasID = document.getElementById( 'Canvas' );
+            var canvas = canvasID.getContext( '2d' );
+		</script>        
+
+		<!-- -------------------------------------------------------------- -->
+		<!-- The javaScript is loaded here...                        		-->
+		<!-- -------------------------------------------------------------- -->
+		<script type = "text/javascript" src = "js/Math.js" 		></script>
+		<script type = "text/javascript" src = "js/Vector2D.js" 	></script>
+		<script type = "text/javascript" src = "js/Vector3D.js" 	></script>
+		<script type = "text/javascript" src = "js/Particle.js"		></script> 
+		<script type = "text/javascript" src = "js/App.js"			></script> 
+		
+		<!-- ------------------------------------------------------------------ -->
+		<!-- The main panel contains all the widgets, etc.                   	-->
+		<!-- ------------------------------------------------------------------ -->
+        <div id = "mainPanel">
+            <div id = "mainTitle">
+                Particle-hedra
+            </div> 
+            <div id = "subTitle">
+                Making polyhedra with inter-particle forces
+            </div> 
+            <div id = "webLink">               
+				<a href="http://www.ventrella.com" target="_blank" >ventrella.com</a>
+            </div> 
+            <div id = "paperLink">
+				<a href="https://www.ventrella.com/particlehedra/paper.pdf" target="_blank" >research paper</a>				
+            </div> 
+            
+			<!-- ------------------------------------------------------------ -->
+			<!-- control panel                                                -->
+			<!-- ------------------------------------------------------------ -->
+			<div id="controlPanel" class = "basicPanel">      
+
+				<button id = "button1"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >tetrahedron		</button>   
+				<button id = "button2"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >trunc tet		</button>   
+				<button id = "button3"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >octahedron		</button>   
+				<button id = "button4"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >cube			</button>   
+				<button id = "button5"    	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >trunc oct		</button>   
+				<button id = "button6"		class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >trunc cube		</button>   
+				<button id = "button7"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >cuboctahedron	</button>   
+				<button id = "button8"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >(in progress)	</button>   
+				<button id = "button9"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >rhombi-cuboct	</button>   
+
+				<button id = "button10"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >icosahedron		</button>  
+				<button id = "button11"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >dodecahedron	</button> 
+				<button id = "button12"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >trunc icos		</button>   
+				<button id = "button13"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >trunc dodec		</button>   
+				<button id = "button14"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >icosadodec		</button>   
+				<button id = "button15"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >(in progress)	</button>   
+				<button id = "button16"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >(in progress)	</button>   
+				
+				<button id = "button20"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >unit sphere		</button> 
+				<button id = "button21"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >particles		</button> 
+				<button id = "button22"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >edges			</button> 
+				<button id = "button23"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >triangles		</button> 
+				<button id = "button25"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >perspective		</button> 
+				<button id = "button26"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >rotate			</button> 
+
+				<button id = "button27"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >nudge			</button>   
+				<button id = "button28"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >zap				</button>   
+				<button id = "button29"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >clear			</button> 
+ 
+				<!-- ------------------------------------------------------------ -->
+				<!-- radio buttons to choose key species				          -->
+				<!-- ------------------------------------------------------------ -->
+				<div id = "radioLabel" class = "labelClass" >
+				<small>choose family of particles to determine edges/faces</small>
+				</div>
+				<input type="radio" id="radio0" name="action" value="0" class="radioButtonClass" onmousedown="app.onRadioSelected( value );">
+				<input type="radio" id="radio1" name="action" value="1" class="radioButtonClass" onmousedown="app.onRadioSelected( value );">
+				<input type="radio" id="radio2" name="action" value="2" class="radioButtonClass" onmousedown="app.onRadioSelected( value );">
+				<input type="radio" id="radio3" name="action" value="3" class="radioButtonClass" onmousedown="app.onRadioSelected( value );">
+				<input type="radio" id="radio4" name="action" value="4" class="radioButtonClass" onmousedown="app.onRadioSelected( value );">
+ 
+ 
+ 
+				<!-- ------------------------------------------------------------ -->
+				<!-- tweak panel                                                  -->
+				<!-- ------------------------------------------------------------ -->
+				<div id="tweakPanel" class = "basicPanel">      
+
+					<!-- ------------------------------------------------------------ -->
+					<!-- species 0				                                      -->
+					<!-- ------------------------------------------------------------ -->
+					<div id = "num0Label" class = "labelClass" style="color: #000000;">0</div>
+					<!--<div id = "dot1" class = "dotClass" style="background-color: #000000;" ></div>-->
+					<button id = "button30"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >add</button> 
+					<button id = "button31"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >del</button> 
+				
+					<!-- ------------------------------------------------------------ -->
+					<!-- slider1 and text input 1                                     -->
+					<!-- ------------------------------------------------------------ -->
+					<div id = "slider1Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider1"    
+						class           = "sliderClass"    
+						name            = "slider1"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+				
+					<!-- ------------------------------------------------------------ -->
+					<!-- slider 2 and text input 2                                    -->
+					<!-- ------------------------------------------------------------ -->
+					<div id = "slider2Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider2"    
+						class           = "sliderClass"    
+						name            = "slider2"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+
+
+					<!-- ------------------------------------------------------------ -->
+					<!-- species 1				                                      -->
+					<!-- ------------------------------------------------------------ -->
+					<div id = "num1Label" class = "labelClass" style="color: #5555ff;">0</div>
+					<!--<div id = "dot2" class = "dotClass" style="background-color: #6655ff;" ></div>-->
+					<button id = "button32"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >add</button> 
+					<button id = "button33"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >del</button> 
+		
+					<div id = "slider3Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider3"    
+						class           = "sliderClass"    
+						name            = "slider3"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider4Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider4"    
+						class           = "sliderClass"    
+						name            = "slider4"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider5Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider5"    
+						class           = "sliderClass"    
+						name            = "slider5"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider6Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider6"    
+						class           = "sliderClass"    
+						name            = "slider6"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "num2Label" class = "labelClass" style="color: #bb2222;">0</div>
+					<!--<div id = "dot3" class = "dotClass" style="background-color: #ddaa22;" ></div>-->
+					<button id = "button34"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >add</button> 
+					<button id = "button35"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >del</button> 
+				
+					<div id = "slider7Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider7"    
+						class           = "sliderClass"    
+						name            = "slider7"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider8Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider8"    
+						class           = "sliderClass"    
+						name            = "slider8"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider9Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider9"    
+						class           = "sliderClass"    
+						name            = "slider9"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider10Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider10"    
+						class           = "sliderClass"    
+						name            = "slider10"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider11Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider11"    
+						class           = "sliderClass"    
+						name            = "slider11"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider12Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider12"    
+						class           = "sliderClass"    
+						name            = "slider12"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+
+					<div id = "num3Label" class = "labelClass" style="color: #338822;">0</div>
+					<!--<div id = "dot4" class = "dotClass" style="background-color: #992211;" ></div>-->
+					<button id = "button36"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >add</button> 
+					<button id = "button37"   	class = "buttonClass" onmousedown  = "app.onButtonSelected( id );" >del</button> 
+
+					<div id = "slider13Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider13"    
+						class           = "sliderClass"    
+						name            = "slider13"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider14Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider14"    
+						class           = "sliderClass"    
+						name            = "slider14"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider15Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider15"    
+						class           = "sliderClass"    
+						name            = "slider15"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider16Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider16"    
+						class           = "sliderClass"    
+						name            = "slider16"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider17Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider17"    
+						class           = "sliderClass"    
+						name            = "slider17"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider18Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider18"    
+						class           = "sliderClass"    
+						name            = "slider18"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider19Label" class = "labelClass" >force</div>
+					<input 
+						type            = "range" 
+						id              = "slider19"    
+						class           = "sliderClass"    
+						name            = "slider19"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+					<div id = "slider20Label" class = "labelClass" >radius</div>
+					<input 
+						type            = "range" 
+						id              = "slider20"    
+						class           = "sliderClass"    
+						name            = "slider20"      
+						min				= 0
+						max				= 1000
+						step            = 1
+						autocomplete    = "off" 
+						oninput         = "app.onSliderChanged( id )"
+					>
+				</div> <!-- tweak panel -->
+            </div> <!--controlPanel-->
+        </div> <!--mainPanel-->
+	</body>
+</html>
