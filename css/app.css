@@ -1,0 +1,337 @@
+body 
+{
+    background-color: #ffffff;
+}
+
+/* -------------------------------------------- */
+/* classes                                      */
+/* -------------------------------------------- */
+.basicPanel
+{ 
+    position:               absolute; 
+    background-color:       #caccc2;
+    border-color:           #666659;       
+    border-style:           solid;
+    border-radius:          3px;
+    border-width:           1px; 
+    color:                  #005500; 
+    font-family:            "Arial";
+    font-size:              12px;
+}
+
+.buttonClass
+{
+    position:   absolute;
+    width:      110px;
+    height:     25px;
+    border-radius: 4px;
+    background-color: #eeecea;
+}
+
+.sliderClass
+{ 
+    position:               absolute;
+    width:					140px; 
+    height:					20px; 
+}
+
+.radioButtonClass
+{ 
+    position:               absolute;
+    width:                  20px; 
+    height:                 20px; 
+    border-radius:          50%; 
+}
+
+.inputClass
+{ 
+    position:               absolute;
+    width:					40px; 
+    height:					12px; 
+}
+
+.labelClass
+{ 
+    position:               absolute;
+    height:					50px; 
+    color:                  #005500; 
+    font-family:            "Arial";
+    font-size:              16px;
+}
+
+.dotClass
+{
+    position: absolute; 
+	height: 10px;
+	width: 10px;
+	background-color: #ff0000;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+
+.radio-group 
+{
+  position: absolute;
+  left: 10px;
+  top: 820px;
+}
+
+#mainPanel
+{
+    position:				absolute; 
+    top:					0px;
+    right:					0px;
+    width:					380px; 
+    height:					100%;
+    background-color:       #caccc2;
+	border-left: 2px solid #666659;
+    color:                  #005500; 
+    font-family:            "Arial";
+    font-size:              12px;
+}
+
+#mainTitle
+{
+    position:			absolute; 
+    left:				10px;
+    top:				10px;
+    width:				320px; 
+    background-color: 	#caccc2;
+    color:		 		#666666; 
+    font-family: 		"Arial black";
+    font-size:  		20px;
+}
+
+#subTitle
+{
+    position:			absolute; 
+    left:				10px;
+    top:				40px;
+    width:				320px; 
+    background-color: 	#caccc2;
+    color:		 		#666666; 
+    font-family: 		"Arial";
+    font-size:  		16px;
+}
+
+
+#webLink
+{
+    position:			absolute; 
+    left:				210px;
+    top:				60px;
+    width:				200px; 
+    background-color: 	#caccc2;
+    color:		 		#666666; 
+    font-family: 		"Arial";
+    font-size:  		16px;
+}
+
+#paperLink
+{
+    position:			absolute; 
+    left:				10px;
+    top:				60px;
+    width:				150px; 
+    background-color: 	#caccc2;
+    color:		 		#666666; 
+    font-family: 		"Arial";
+    font-size:  		16px;
+}
+
+#controlPanel
+{
+    position:				absolute; 
+    top:					90px;
+    left:					10px;
+    width:					360px; 
+    height:					900px;
+    
+    /*
+	background-image: 		url( "../images/background.png" );
+	background-size: 		cover;
+	background-repeat: 		no-repeat;
+	*/
+	
+    background-color:       #dddcda;
+    color:                  #005500; 
+    font-family:            "Arial";
+    font-size:              12px;
+}
+
+
+#tweakPanel
+{
+    position:	absolute; 
+    top:		430px;
+}
+
+
+
+#button1 		{ left: 10px; top:   10px; }
+#button2 		{ left: 10px; top:   70px; }
+
+#button3 		{ left: 120px; top:  10px; }
+#button4 		{ left: 120px; top:  40px; }
+#button5 		{ left: 120px; top:  70px; }
+#button6 		{ left: 120px; top: 100px; }
+#button7 		{ left: 120px; top: 130px; }
+#button8 		{ left: 120px; top: 160px; }
+#button9 		{ left: 120px; top: 190px; }
+
+#button10 		{ left: 230px; top:  10px; }
+#button11 		{ left: 230px; top:  40px; }
+#button12 		{ left: 230px; top:  70px; }
+#button13 		{ left: 230px; top: 100px; }
+#button14 		{ left: 230px; top: 130px; }
+#button15 		{ left: 230px; top: 160px; }
+#button16 		{ left: 230px; top: 190px; }
+
+#button17 		{ left: 230px; top: 250px; }
+#button18 		{ left: 230px; top: 280px; }
+#button19 		{ left: 230px; top: 310px; }
+
+
+#button20 		{ left:  10px; top: 240px; }
+#button21 		{ left:  10px; top: 270px; }
+
+#button22 		{ left: 120px; top: 240px; }
+#button23 		{ left: 120px; top: 270px; }
+
+#button25 		{ left: 230px; top: 240px; }
+#button26 		{ left: 230px; top: 270px; }
+
+#button27 		{ left:  10px; top: 300px; }
+#button28 		{ left: 120px; top: 300px; }
+
+#button29 		{ left: 230px; top: 300px; }
+
+
+/*#button24 		{ left: 230px; top: 670px; }*/
+
+
+
+/*
+#button29 		{ left: 10px; top: 700px; }
+#button30 		{ left: 10px; top: 730px; }
+*/
+
+#radioLabel 
+{
+	position: absolute; 
+	left:  20px; 
+	top: 360px; 
+	top: 360px; 
+}
+
+#radio0 { left:  20px; top: 380px; border: 2px solid black; }
+#radio1 { left:  60px; top: 380px; border: 2px solid blue; } 
+#radio2 { left: 100px; top: 380px; border: 2px solid red; } 
+#radio3 { left: 140px; top: 380px; border: 2px solid green; } 
+#radio4 { left: 180px; top: 380px; border: 2px solid yellow; } 
+
+
+#num0Label 		{ left:  10px; top: 10px; font-size: 16px; }
+#dot1			{ left:  10px; top: 10px; width: 16px; height: 16px; }
+#button30 		{ left:  30px; top: 0px; width: 40px; height: 25px; }
+#button31 		{ left:  70px; top: 0px; width: 40px; height: 25px; }
+
+#slider1Label 	{ left:  30px; top: 25px; font-size: 10px; }
+#slider1		{ left:  30px; top: 30px; }
+
+#slider2Label 	{ left: 195px; top: 25px; font-size: 10px; }
+#slider2		{ left: 195px; top: 30px; }
+
+
+
+#num1Label 		{ left:  10px; top: 60px; font-size: 16px; }
+#dot2			{ left:  10px; top: 60px; height: 16px; width: 16px; }
+#button32 		{ left:  30px; top: 60px; width: 40px; height: 25px; }
+#button33 		{ left:  70px; top: 60px; width: 40px; height: 25px; }
+
+#slider3Label 	{ left:  30px; top: 85px; font-size: 10px; }
+#slider3		{ left:  30px; top: 90px; }
+
+#slider4Label 	{ left: 195px; top: 85px; font-size: 10px; }
+#slider4		{ left: 195px; top: 90px; }
+
+#slider5Label 	{ left:  30px; top: 105px; font-size: 10px; }
+#slider5		{ left:  30px; top: 110px; }
+
+#slider6Label 	{ left: 195px; top: 105px; font-size: 10px; }
+#slider6		{ left: 195px; top: 110px; }
+
+
+
+
+
+
+#num2Label 		{ left:  10px; top: 140px; font-size: 16px; }
+#dot3			{ left:  10px; top: 140px; height: 16px; width: 16px; }
+#button34 		{ left:  30px; top: 140px; width: 40px; height: 25px; }
+#button35 		{ left:  70px; top: 140px; width: 40px; height: 25px; }
+
+#slider7Label 	{ left:  30px; top: 170px; font-size: 10px; }
+#slider7		{ left:  30px; top: 175px; }
+
+#slider8Label 	{ left: 195px; top: 170px; font-size: 10px; }
+#slider8		{ left: 195px; top: 175px; }
+
+#slider9Label 	{ left:  30px; top: 192px; font-size: 10px; }
+#slider9		{ left:  30px; top: 195px; }
+
+#slider10Label 	{ left: 195px; top: 192px; font-size: 10px; }
+#slider10		{ left: 195px; top: 195px; }
+
+#slider11Label 	{ left:  30px; top: 215px; font-size: 10px; }
+#slider11		{ left:  30px; top: 217px; }
+#input11 		{ left: 135px; top: 220px; }
+
+#slider12Label 	{ left: 195px; top: 215px; font-size: 10px; }
+#slider12		{ left: 195px; top: 217px; }
+#input12 		{ left: 300px; top: 220px; }
+
+
+
+
+
+
+
+
+
+
+#num3Label 		{ left:  10px; top: 250px; font-size: 16px; }
+#button36 		{ left:  30px; top: 250px; width: 40px; height: 25px; }
+#button37 		{ left:  70px; top: 250px; width: 40px; height: 25px; }
+
+#slider13Label 	{ left:  30px; top: 275px; font-size: 10px; }
+#slider13		{ left:  30px; top: 277px; }
+
+#slider14Label 	{ left: 195px; top: 275px; font-size: 10px; }
+#slider14		{ left: 195px; top: 277px; }
+
+#slider15Label 	{ left:  30px; top: 295px; font-size: 10px; }
+#slider15		{ left:  30px; top: 297px; }
+#input15 		{ left: 135px; top: 300px; }
+
+#slider16Label 	{ left: 195px; top: 295px; font-size: 10px; }
+#slider16		{ left: 195px; top: 297px; }
+#input16 		{ left: 300px; top: 300px; }
+
+#slider17Label 	{ left:  30px; top: 315px; font-size: 10px; }
+#slider17		{ left:  30px; top: 317px; }
+#input17 		{ left: 135px; top: 320px; }
+
+#slider18Label 	{ left: 195px; top: 315px; font-size: 10px; }
+#slider18		{ left: 195px; top: 317px; }
+#input18 		{ left: 300px; top: 320px; }
+
+#slider19Label 	{ left:  30px; top: 335px; font-size: 10px; }
+#slider19		{ left:  30px; top: 337px; }
+#input19 		{ left: 135px; top: 340px; }
+
+#slider20Label 	{ left: 195px; top: 335px; font-size: 10px; }
+#slider20		{ left: 195px; top: 337px; }
+#input20 		{ left: 300px; top: 340px; }
+
